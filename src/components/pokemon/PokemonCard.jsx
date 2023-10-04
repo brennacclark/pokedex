@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom'; 
 
 const Sprite = styled.img`
   width: 3em;
@@ -59,21 +60,23 @@ export default class PokemonCard extends Component {
 
     return (
       <div className="col-md-3 col-sm-6 mb-5">
-       <Card className="card">
-          <h6 className="card-header">{id}</h6>
-          <Sprite
-            className="card-img-top rounded mx-auto mt-2"
-            onLoad={() => this.setState({ imageLoading: false })}
-            onError={() => this.setState({ tooManyRequests: true })}
-            src={imageUrl}
-          />
-          {/* {tooManyRequests ? (<h6>
-            <span className="badge badge-danger mt-2">Too Many Requests</span>
-          </h6>) : null} */}
-          <div className="card-body mx-auto">
-            <h6 className="card-title" style={{ fontSize: '10px' }}>{formattedName}</h6>
-          </div>
-        </Card>
+        <Link to={`/pokemon/${id}`}>
+          <Card className="card">
+              <h6 className="card-header">{id}</h6>
+              <Sprite
+                className="card-img-top rounded mx-auto mt-2"
+                onLoad={() => this.setState({ imageLoading: false })}
+                onError={() => this.setState({ tooManyRequests: true })}
+                src={imageUrl}
+              />
+              {/* {tooManyRequests ? (<h6>
+                <span className="badge badge-danger mt-2">Too Many Requests</span>
+              </h6>) : null} */}
+              <div className="card-body mx-auto">
+                <h6 className="card-title" style={{ fontSize: '10px' }}>{formattedName}</h6>
+              </div>
+            </Card>
+        </Link>
       </div>
     );
   }
