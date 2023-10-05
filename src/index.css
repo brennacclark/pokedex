@@ -5,4 +5,11 @@ code,
 kbd,
 samp {
   font-family: 'Press Start 2P', cursive;
+  font-size: 1vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  max-height: 95%;
 }
