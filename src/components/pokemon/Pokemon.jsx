@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import GenderRatioBarGraph from './GenderRatioBarGraph'; // Import the GenderRatioBarGraph component
+
 
 const TYPE_COLORS = {
   bug: 'B1C12E',
@@ -21,6 +23,7 @@ const TYPE_COLORS = {
   steel: 'B5B5C3',
   water: '3295F6'
 };
+
 function Pokemon() {
   const { id } = useParams();
   const [pokemonData, setPokemonData] = useState({
@@ -51,6 +54,13 @@ function Pokemon() {
     themeColor: '#EF5350'
   });
 
+  function replaceString(data) {
+  // Use replace method with a regular expression to replace characters
+  const cleanedData = data.replace(/[\f\n\r\t'"\\"\\]/g, ' ');
+
+  return cleanedData;
+}
+
   // Function to fetch Pokemon data
   async function fetchData() {
     try {
@@ -72,9 +82,9 @@ function Pokemon() {
         name: pokemonData.name.charAt(0).toUpperCase() + pokemonData.name.slice(1).replace('-', ' '),
         imageUrl: pokemonData.sprites.front_default,
         types: pokemonData.types.map((type) => type.type.name),
-        description: speciesData.flavor_text_entries.find(
-          (entry) => entry.language.name === 'en'
-        ).flavor_text,
+        description: replaceString(speciesData.flavor_text_entries.find(
+            (entry) => entry.language.name === 'en'
+          ).flavor_text), // Use replaceString to clean the description
         statTitleWidth: 3,
         statBarWidth: 9,
         stats: {
@@ -138,30 +148,48 @@ function Pokemon() {
    // Function to render the Pokemon data as a table
   function renderPokemonTable() {
     return (
-      <table>
-        <thead>
-          <tr>
-            <th>Stat</th>
-            <th>Value</th>
-          </tr>
-        </thead>
-        <tbody>
-          {Object.entries(pokemonData.stats).map(([statName, statValue]) => (
-            <tr key={statName}>
-              <td>{statName.charAt(0).toUpperCase() + statName.slice(1)}</td>
-              <td>{statValue}</td>
+    <div style={{ marginTop: '20px', marginBottom: '20px' }} className="nes-table-responsive">
+      <table className="nes-table is-bordered is-centered">
+          <thead>
+            <tr>
+              <th>Stat</th>
+              <th>Value</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {Object.entries(pokemonData.stats).map(([statName, statValue]) => (
+              <tr key={statName}>
+                <td>{statName.charAt(0).toUpperCase() + statName.slice(1)}</td>
+                <td>{statValue}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     );
   }
 
     // Function to render the Pokemon data
+  function renderPokemonDesc() {
+
+    const cleanedDescription = pokemonData.description.replace(/[^ -~]+/g, '');
+
+    return (
+       <div style={{ marginTop: '20px', marginBottom: '20px' }}>
+          
+          <div style={{ marginTop: '20px', marginBottom: '20px' }} className="nes-container with-title is-centered">
+            <p className="title">Description</p>
+            <p>{pokemonData.description}</p>
+          </div>
+
+      </div>
+    );
+  }
+
+      // Function to render the Pokemon data
   function renderPokemonData() {
     return (
-      <div>
-        <p>Description: {pokemonData.description}</p>
+       <div style={{ marginTop: '20px', marginBottom: '20px' }}>
         <p>Height: {pokemonData.height}</p>
         <p>Weight: {pokemonData.weight}</p>
         <p>Egg Groups: {pokemonData.eggGroups}</p>
@@ -184,7 +212,7 @@ function Pokemon() {
   return (
     <div>
       {renderPokemonTitle()}
-      <h4>Pokemon Stats</h4>
+      {renderPokemonDesc()}
       {renderPokemonTable()}
       {renderPokemonData()}
     </div>
