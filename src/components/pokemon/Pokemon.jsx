@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import GenderRatioBarGraph from './GenderRatioBarGraph'; // Import the GenderRatioBarGraph component
-
 
 const TYPE_COLORS = {
   bug: 'B1C12E',
@@ -45,8 +43,9 @@ function Pokemon() {
     height: '',
     weight: '',
     eggGroups: '',
-    catchRate: '',
+    capture_rate: '',
     abilities: '',
+    femaleRate: '',
     genderRatioMale: '',
     genderRatioFemale: '',
     evs: '',
@@ -54,15 +53,43 @@ function Pokemon() {
     themeColor: '#EF5350'
   });
 
-  function replaceString(data) {
+  function formatName(name) {
+    return name.charAt(0).toUpperCase() + name.slice(1).replace('-', ' ');
+  }
+
+  function formatDescription(string) {
   // Use replace method with a regular expression to replace characters
-  const cleanedData = data.replace(/[\f\n\r\t'"\\"\\]/g, ' ');
+  const cleanedData = string.replace(/[\f\n\r\t'"\\"\\]/g, ' ');
 
   return cleanedData;
-}
+  }
+  
+  function formatAbilities(abilities) {
+    return abilities
+      .map((ability) =>
+        ability.ability.name
+          .replace(/-/g, ' ') // Replace hyphens with spaces
+          .toLowerCase() // Convert to lowercase
+          .replace(/(^|\s)\S/g, (match) => match.toUpperCase()) // Capitalize each word
+      )
+      .join(', ');
+  }
+
+  // Function to format egg groups
+  function formatEggGroups(eggGroups) {
+    return eggGroups
+      .map((group) =>
+        group
+          .name
+          .replace(/-/g, ' ') // Replace hyphens with spaces
+          .toLowerCase() // Convert to lowercase
+          .replace(/(^|\s)\S/g, (match) => match.toUpperCase()) // Capitalize each word
+      )
+      .join(', ');
+  }
 
   // Function to fetch Pokemon data
-  async function fetchData() {
+  async function componentDidMount() {
     try {
       // Urls for pokemon information
       const pokemonUrl = `https://pokeapi.co/api/v2/pokemon/${id}/`;
@@ -79,14 +106,15 @@ function Pokemon() {
 
       // Update the state with the fetched data
       setPokemonData({
-        name: pokemonData.name.charAt(0).toUpperCase() + pokemonData.name.slice(1).replace('-', ' '),
+        name: formatName(pokemonData.name),
         imageUrl: pokemonData.sprites.front_default,
         types: pokemonData.types.map((type) => type.type.name),
-        description: replaceString(speciesData.flavor_text_entries.find(
+        description: formatDescription(speciesData.flavor_text_entries.find(
             (entry) => entry.language.name === 'en'
-          ).flavor_text), // Use replaceString to clean the description
+          ).flavor_text),
         statTitleWidth: 3,
         statBarWidth: 9,
+
         stats: {
           hp: pokemonData.stats[0].base_stat,
           attack: pokemonData.stats[1].base_stat,
@@ -95,21 +123,43 @@ function Pokemon() {
           specialAttack: pokemonData.stats[3].base_stat,
           specialDefense: pokemonData.stats[4].base_stat,
         },
-        height: pokemonData.height,
-        weight: pokemonData.weight,
-        eggGroups: speciesData.egg_groups.map((group) => group.name).join(', '),
-        catchRate: speciesData.capture_rate,
-        abilities: pokemonData.abilities
-          .map((ability) => ability.ability.name)
-          .join(', '),
-        genderRatioMale: speciesData.gender_rate,
-        genderRatioFemale: 100 - speciesData.gender_rate,
-        evs: pokemonData.stats[0].effort,
+
+        height: Math.round((pokemonData.height * 0.328084 + 0.00001) * 100) / 100,    //convert to feet
+        weight: Math.round((pokemonData.weight * 0.220462 + 0.00001) * 100) / 100,    //convert to pounds
+
+        capture_rate: Math.round((100 / 255) * speciesData.capture_rate),             //make percentage max 255
+
+        eggGroups: formatEggGroups(speciesData.egg_groups),
+
+        abilities: formatAbilities(pokemonData.abilities),
+        
+        femaleRate: speciesData.gender_rate, // chance of 1 in 8 pokemon being female 
+        genderRatioFemale: 12.5 * (speciesData.gender_rate),
+        genderRatioMale: 12.5 * (8 - speciesData.gender_rate),
+
+        evs: pokemonData.stats.filter(stat => {
+          if (stat.effort > 0) {
+            return true;
+          }
+          return false;
+        })
+        .map(stat => {
+          return `${stat.effort} ${stat.stat.name
+            .toLowerCase()
+            .split('-')
+            .map(s => s.charAt(0).toUpperCase() + s.substring(1))
+            .join(' ')}`;
+        })
+        .join(', '),
         hatchSteps: speciesData.hatch_counter,
         themeColor: TYPE_COLORS[pokemonData.types[0].type.name],
       });
 
       // You can also do more data processing here if required
+     
+
+
+
     } catch (error) {
       console.error('Error fetching Pokemon data:', error);
     }
@@ -117,7 +167,7 @@ function Pokemon() {
 
   // Call the fetchData function when the component mounts
   useEffect(() => {
-    fetchData();
+    componentDidMount();
   }, [id]);
 
   // Function to render the Pokemon data
@@ -190,20 +240,16 @@ function Pokemon() {
   function renderPokemonData() {
     return (
        <div style={{ marginTop: '20px', marginBottom: '20px' }}>
-        <p>Height: {pokemonData.height}</p>
-        <p>Weight: {pokemonData.weight}</p>
+        <p>Height: {pokemonData.height} ft</p>
+        <p>Weight: {pokemonData.weight} lbs</p>
         <p>Egg Groups: {pokemonData.eggGroups}</p>
-        <p>Catch Rate: {pokemonData.catchRate}</p>
+        <p>Capture Rate: {pokemonData.capture_rate}%</p>
         <p>Abilities: {pokemonData.abilities}</p>
-        <div>
-          Gender Ratio (Male/Female):
-          <GenderRatioBarGraph
-            maleRatio={pokemonData.genderRatioMale}
-            femaleRatio={pokemonData.genderRatioFemale}
-          />
-        </div>
         <p>Effort Values (EVs): {pokemonData.evs}</p>
+        <p>Gender Rate (Female): {pokemonData.femaleRate} / 8 pokemon</p>
+        <p>Gender Ratio (Male/Female): {pokemonData.genderRatioMale}% / {pokemonData.genderRatioFemale}%</p>
         <p>Hatch Steps: {pokemonData.hatchSteps}</p>
+
         {/* Add more elements to display other properties */}
       </div>
     );
