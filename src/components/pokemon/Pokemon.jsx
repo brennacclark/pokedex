@@ -22,8 +22,9 @@ const TYPE_COLORS = {
   water: '3295F6'
 };
 
-function Pokemon() {
-  const { id } = useParams();
+function Pokemon({id: propId}) {
+  const { id: paramId } = useParams();
+  const id = propId || paramId;
   const [pokemonData, setPokemonData] = useState({
     name: '',
     pokemonIndex: '',
@@ -107,6 +108,7 @@ function Pokemon() {
       // Update the state with the fetched data
       setPokemonData({
         name: formatName(pokemonData.name),
+        pokemonIndex: pokemonData.id,
         imageUrl: pokemonData.sprites.front_default,
         types: pokemonData.types.map((type) => type.type.name),
         description: formatDescription(speciesData.flavor_text_entries.find(
@@ -176,7 +178,7 @@ function Pokemon() {
       <div>
         <h2>{pokemonData.name}</h2>
         <img src={pokemonData.imageUrl} alt={pokemonData.name} />
-        <p>ID: {id}</p>
+        <p>ID: {pokemonData.pokemonIndex}</p>
         {pokemonData.types.map((type) => (
           <span
             key={type}
