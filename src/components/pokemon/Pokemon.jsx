@@ -167,7 +167,13 @@ function Pokemon() {
         <p>Egg Groups: {pokemonData.eggGroups}</p>
         <p>Catch Rate: {pokemonData.catchRate}</p>
         <p>Abilities: {pokemonData.abilities}</p>
-        <p>Gender Ratio (Male/Female): {pokemonData.genderRatioMale}/{pokemonData.genderRatioFemale}</p>
+        <div>
+          Gender Ratio (Male/Female):
+          <GenderRatioBarGraph
+            maleRatio={pokemonData.genderRatioMale}
+            femaleRatio={pokemonData.genderRatioFemale}
+          />
+        </div>
         <p>Effort Values (EVs): {pokemonData.evs}</p>
         <p>Hatch Steps: {pokemonData.hatchSteps}</p>
         {/* Add more elements to display other properties */}
