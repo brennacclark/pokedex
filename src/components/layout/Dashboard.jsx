@@ -28,13 +28,15 @@ export default class Dashboard extends Component {
       <div>
         <PokemonList limit={this.state.limit} offset={this.state.offset} />
         <div className="pagination">
-          <button
+          <button 
+            className="nes-btn"
             onClick={this.handlePreviousClick}
             disabled={this.state.offset === 0}
           >
             Previous
           </button>
-          <button
+          <button 
+            className="nes-btn"
             onClick={this.handleNextClick}
           >
             Next
