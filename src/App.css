@@ -18,3 +18,13 @@ samp {
   background-color: #ef5350 !important;
 }
 
+.nav-container {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  /* Add this line to align the container to the right */
+}
+
+.nav-item {
+  text-align: right;
+}
