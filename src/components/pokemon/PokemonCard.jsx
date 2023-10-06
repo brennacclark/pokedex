@@ -12,8 +12,7 @@ export default class PokemonCard extends Component {
     name: '',
     id: '',
     imageUrl: '',
-    imageLoading: true,
-    tooManyRequests: false
+    imageLoading: true
   };
 
   componentDidMount() {
@@ -57,9 +56,6 @@ export default class PokemonCard extends Component {
                 onError={() => this.setState({ tooManyRequests: true })}
                 src={imageUrl}
               />
-              {/* {tooManyRequests ? (<h6>
-                <span className="badge badge-danger mt-2">Too Many Requests</span>
-              </h6>) : null} */}
               <div className="">
                 <h6 className="" >{formattedName}</h6>
               </div>

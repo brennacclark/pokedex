@@ -9,7 +9,7 @@ export default class Navbar extends Component {
     return (
       <div >
             <nav className="" >
-              <Link to="/" className="">POKéDEX</Link>
+              <Link to="/" className="title">POKéDEX</Link>
               <div className="" >
                   <Link className=" " to="/about"><div>about</div></Link>
                   <Link className="" to="/contact"><div>contact</div></Link>
