@@ -3,7 +3,7 @@ import PokemonList from '../pokemon/PokemonList';
 
 export default class Dashboard extends Component {
   state = {
-    limit: 20, // Number of Pokémon to display per page
+    limit: 24, // Number of Pokémon to display per page
     offset: 0, // Offset for paginating through results
   };
 

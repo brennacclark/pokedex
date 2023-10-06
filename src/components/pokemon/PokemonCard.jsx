@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom'; 
 
 const Sprite = styled.img`
-  width: 3em;
-  height: 5em;
+  width: 10em;
+  height: auto;
 `;
 
 const Card = styled.div`
@@ -59,13 +59,13 @@ export default class PokemonCard extends Component {
   return (
     <Card>
       <Link to={`/pokemon/${id}`}>
-        <h6>{id}</h6>
+        <div>{formattedName}  <h6>{id}</h6></div>       
         <Sprite
           onLoad={() => this.setState({ imageLoading: false })}
           onError={() => this.setState({ tooManyRequests: true })}
           src={imageUrl}
         />
-        <h6>{formattedName}</h6>
+
       </Link>
     </Card>
   );
