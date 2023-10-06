@@ -4,6 +4,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 function Searchbar() {
   const [search, setSearch] = useState('');
   const [invalidSearch, setInvalidSearch] = useState(false);
+  const [isLoading, setIsLoading] = useState(false); // New state to track loading status
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -18,6 +19,7 @@ function Searchbar() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setInvalidSearch(false);
+    setIsLoading(true); // Set loading status to true when search starts
 
     // Convert search to lowercase
     const searchLowercase = search.toLowerCase();
@@ -29,6 +31,10 @@ function Searchbar() {
       // Check if the response is ok
       if (!response.ok) {
         // If the response is not ok, throw an error
+          if (response.status === 404) {
+            setInvalidSearch(true);
+            console.log('Pokemon not found'); // Print to console if status is 404
+        }
         throw new Error('Pokemon not found. Please try again.');
       }
 
@@ -39,6 +45,8 @@ function Searchbar() {
       console.error(error);
       setInvalidSearch(true);
       setSearch(''); // Clear the input field
+    } finally {
+      setIsLoading(false); // Set loading status to false when search ends
     }
   };
 
@@ -52,7 +60,9 @@ function Searchbar() {
         onFocus={() => setInvalidSearch(false)} // Reset invalidSearch when input box gets focus
         style={invalidSearch ? { borderColor: 'red', color: 'red' } : {}}
       />
-      <button type="submit">Search</button>
+      <button type="submit" disabled={isLoading}> {/* Disable button when isLoading is true */}
+        {isLoading ? 'Searching...' : 'Search'} {/* Change button text based on loading status */}
+      </button>
     </form>
   );
 }
