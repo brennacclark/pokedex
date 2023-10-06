@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { Route, Routes } from "react-router-dom";
 import './App.css'
-import '@sakun/system.css';
 
 import Navbar from './components/layout/Navbar';
 import About from './components/layout/About'
@@ -10,9 +9,22 @@ import Dashboard from "./components/layout/Dashboard";
 import Pokemon from './components/pokemon/PokemonDetails';
 
 function App() {
+
+  const [theme, setTheme] = useState('light');
+
+  const toggleTheme = () => {
+    if (theme === 'light') {
+      setTheme('dark');
+      document.body.classList.add('dark');
+    } else {
+      setTheme('light');
+      document.body.classList.remove('dark');
+    }
+  };
+
   return (
     <div className="App">
-      <Navbar />
+      <Navbar toggleTheme={toggleTheme}/>
       <Routes>
         <Route path="/" element= {<Dashboard/>} />
         <Route path="/about" element= {<About/>} />
