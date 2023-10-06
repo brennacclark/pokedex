@@ -22,7 +22,7 @@ const TYPE_COLORS = {
   water: '3295F6'
 };
 
-function Pokemon({id: propId}) {
+function PokemonDetails({id: propId}) {
   const { id: paramId } = useParams();
   const id = propId || paramId;
   const [pokemonData, setPokemonData] = useState({

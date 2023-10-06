@@ -6,7 +6,7 @@ import Navbar from './components/layout/Navbar';
 import About from './components/layout/About'
 import Contact from './components/layout/Contact'
 import Dashboard from "./components/layout/Dashboard";
-import Pokemon from './components/pokemon/Pokemon';
+import Pokemon from './components/pokemon/PokemonDetails';
 
 function App() {
   return (
