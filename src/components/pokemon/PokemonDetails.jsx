@@ -229,7 +229,7 @@ function PokemonDetails({id: propId}) {
     return (
        <div>
           <div className="">
-            <p className="title">Description</p>
+            <p className="">Description</p>
             <p>{pokemonData.description}</p>
           </div>
       </div>

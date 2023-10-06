@@ -23,20 +23,28 @@ export default class Dashboard extends Component {
     );
   };
 
+  handleFirstPageClick = () => {
+    this.setState(
+      prevState => ({
+        offset: 0
+      })
+    );
+  };
+
   render() {
     return (
       <div>
         <PokemonList limit={this.state.limit} offset={this.state.offset} />
         <div className="pagination">
           <button 
-            className=""
+            className="btn"
             onClick={this.handlePreviousClick}
             disabled={this.state.offset === 0}
           >
             Previous
           </button>
           <button 
-            className=""
+            className="btn"
             onClick={this.handleNextClick}
           >
             Next

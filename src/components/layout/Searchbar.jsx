@@ -60,7 +60,10 @@ function Searchbar() {
         onFocus={() => setInvalidSearch(false)} // Reset invalidSearch when input box gets focus
         style={invalidSearch ? { borderColor: 'red', color: 'red' } : {}}
       />
-      <button type="submit" disabled={isLoading}> {/* Disable button when isLoading is true */}
+      <button
+        className="btn"
+        type="submit"
+        disabled={isLoading}> {/* Disable button when isLoading is true */}
         {isLoading ? 'Searching...' : 'Search'} {/* Change button text based on loading status */}
       </button>
     </form>
