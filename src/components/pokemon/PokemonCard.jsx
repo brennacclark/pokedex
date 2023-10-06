@@ -7,6 +7,17 @@ const Sprite = styled.img`
   height: 5em;
 `;
 
+const Card = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px;
+  max-width: 30vh;
+`;
+
 export default class PokemonCard extends Component {
   state = {
     name: '',
@@ -45,23 +56,18 @@ export default class PokemonCard extends Component {
     const nameParts = name.split('-').map(part => part.charAt(0).toUpperCase() + part.slice(1));
     const formattedName = nameParts.join(' ');
 
-    return (
-      <div className="">
-        <Link to={`/pokemon/${id}`}>
-          <div className="">
-              <h6 className="">{id}</h6>
-              <Sprite
-                className=""
-                onLoad={() => this.setState({ imageLoading: false })}
-                onError={() => this.setState({ tooManyRequests: true })}
-                src={imageUrl}
-              />
-              <div className="">
-                <h6 className="" >{formattedName}</h6>
-              </div>
-            </div>
-        </Link>
-      </div>
-    );
+  return (
+    <Card>
+      <Link to={`/pokemon/${id}`}>
+        <h6>{id}</h6>
+        <Sprite
+          onLoad={() => this.setState({ imageLoading: false })}
+          onError={() => this.setState({ tooManyRequests: true })}
+          src={imageUrl}
+        />
+        <h6>{formattedName}</h6>
+      </Link>
+    </Card>
+  );
   }
 }

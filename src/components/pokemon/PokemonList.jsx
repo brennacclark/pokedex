@@ -25,20 +25,18 @@ export default class PokemonList extends Component {
     this.setState({ pokemon: res.data['results'] });
   };
 
-  render() {
+    render() {
     return (
       <React.Fragment>
         {this.state.pokemon ? (
-          <div>
-            <div className="">
-              {this.state.pokemon.map(pokemon => (
-                <PokemonCard
-                  key={pokemon.name}
-                  name={pokemon.name}
-                  url={pokemon.url}
-                />
-              ))}
-            </div>
+          <div className="row">
+            {this.state.pokemon.map(pokemon => (
+              <PokemonCard
+                key={pokemon.name}
+                name={pokemon.name}
+                url={pokemon.url}
+              />
+            ))}
           </div>
         ) : (
           <h6>Loading...</h6>

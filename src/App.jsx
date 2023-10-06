@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Route, Routes } from "react-router-dom";
 import './App.css'
+import '@sakun/system.css';
 
 import Navbar from './components/layout/Navbar';
 import About from './components/layout/About'
