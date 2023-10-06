@@ -267,4 +267,4 @@ function PokemonDetails({id: propId}) {
   );
 }
 
-export default Pokemon;
+export default PokemonDetails;
