@@ -2,3 +2,24 @@
     font-family: 'Press Start 2P';
     font-size: xx-large
 }
+
+/* themes.css */
+.card.light {
+    background-color: #fff;
+    color: #000;
+}
+
+.card.dark {
+    background-color: #333;
+    color: #fff;
+}
+
+.light {
+    background-color: white;
+    color: black;
+}
+
+.dark {
+    background-color: black;
+    color: white;
+}

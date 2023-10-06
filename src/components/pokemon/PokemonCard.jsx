@@ -13,9 +13,9 @@ const Card = styled.div`
   align-items: center;
   border: 1px solid #ccc;
   border-radius: 10px;
-  padding: 10px;
   margin: 10px;
-  max-width: 30vh;
+  max-width:50vh;
+  max-width:50vh;
 `;
 
 export default class PokemonCard extends Component {

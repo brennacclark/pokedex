@@ -18,7 +18,7 @@ export default class Navbar extends Component {
             <Nav.Link href="/contact" className="">contact</Nav.Link>
           </Nav.Item>
           <Nav.Item>
-            <button onClick={this.props.toggleTheme}>Toggle theme</button>
+            <button className="nes-btn" onClick={this.props.toggleTheme}>Toggle theme</button>
           </Nav.Item>
           <Nav.Item> 
             <Searchbar />

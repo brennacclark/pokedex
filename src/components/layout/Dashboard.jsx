@@ -34,8 +34,8 @@ export default class Dashboard extends Component {
   render() {
     return (
       <div style={{ margin: '3vw', }}>
-        <div >
-        <PokemonList limit={this.state.limit} offset={this.state.offset} />
+        <div>
+          <PokemonList limit={this.state.limit} offset={this.state.offset} theme={this.props.theme} />
         </div>
         <div className="pagination" style={{ display: 'flex', justifyContent: 'center' }}>
           <button 
@@ -52,8 +52,7 @@ export default class Dashboard extends Component {
             Next
           </button>
         </div>
-    </div>
-
+      </div>
     );
   }
 }
