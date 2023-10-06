@@ -200,8 +200,8 @@ function PokemonDetails({id: propId}) {
    // Function to render the Pokemon data as a table
   function renderPokemonTable() {
     return (
-    <div style={{ marginTop: '20px', marginBottom: '20px' }} className="nes-table-responsive">
-      <table className="nes-table is-bordered is-centered">
+    <div className="">
+      <table className="">
           <thead>
             <tr>
               <th>Stat</th>
@@ -227,13 +227,11 @@ function PokemonDetails({id: propId}) {
     const cleanedDescription = pokemonData.description.replace(/[^ -~]+/g, '');
 
     return (
-       <div style={{ marginTop: '20px', marginBottom: '20px' }}>
-          
-          <div style={{ margin: '20px' }} className="nes-container with-title is-centered">
+       <div>
+          <div className="">
             <p className="title">Description</p>
             <p>{pokemonData.description}</p>
           </div>
-
       </div>
     );
   }
@@ -241,7 +239,7 @@ function PokemonDetails({id: propId}) {
       // Function to render the Pokemon data
   function renderPokemonData() {
     return (
-       <div style={{ marginTop: '20px', marginBottom: '20px' }}>
+       <div >
         <p>Height: {pokemonData.height} ft</p>
         <p>Weight: {pokemonData.weight} lbs</p>
         <p>Egg Groups: {pokemonData.eggGroups}</p>

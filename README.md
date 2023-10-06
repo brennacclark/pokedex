@@ -22,3 +22,13 @@ Currently, two official plugins are available:
 # Pokemon Data
 
 # [PokéAPI](https://pokeapi.co)
+
+
+
+Dev Log
+
+Day 1: Research 
+Day 2: Getting Pokemon in List
+Day 3: Getting Pokemon Details
+Day 4: Routing and Page Navigation 
+

@@ -10,9 +10,9 @@ export default class Navbar extends Component {
       <div >
             <nav className="" >
               <Link to="/" className="">POKéDEX</Link>
-              <div className="navbar-nav me-auto mb-2 mb-lg-0" >
-                  <Link className="nav-link " to="/about"><div>about</div></Link>
-                  <Link className="nav-link" to="/contact"><div>contact</div></Link>
+              <div className="" >
+                  <Link className=" " to="/about"><div>about</div></Link>
+                  <Link className="" to="/contact"><div>contact</div></Link>
           </div>
           
           <Searchbar />
