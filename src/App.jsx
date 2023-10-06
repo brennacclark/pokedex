@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { Route, Routes } from "react-router-dom";
 import './App.css'
 import "nes.css/css/nes.min.css";
-import 'bootstrap/dist/css/bootstrap.min.css'
 import Navbar from './components/layout/Navbar';
 import About from './components/layout/About'
 import Contact from './components/layout/Contact'

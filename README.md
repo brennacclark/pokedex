@@ -1,7 +1,6 @@
 # Styling 
 
 - [NES.css - NES-style CSS Framework](https://nostalgic-css.github.io/NES.css/)
-- [Bootstrap [latest]](https://getbootstrap.com) 
 
 
 
