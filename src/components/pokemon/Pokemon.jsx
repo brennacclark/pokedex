@@ -229,7 +229,7 @@ function Pokemon({id: propId}) {
     return (
        <div style={{ marginTop: '20px', marginBottom: '20px' }}>
           
-          <div style={{ marginTop: '20px', marginBottom: '20px' }} className="nes-container with-title is-centered">
+          <div style={{ margin: '20px' }} className="nes-container with-title is-centered">
             <p className="title">Description</p>
             <p>{pokemonData.description}</p>
           </div>
