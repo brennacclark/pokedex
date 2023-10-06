@@ -12,14 +12,16 @@ export default class Navbar extends Component {
         <Nav as="ul">
           <Nav.Item >
             <Nav.Link href="/" className="title">POKéDEX</Nav.Link>
-            </Nav.Item>
-                    <Nav.Item >
+          </Nav.Item>
+          <Nav.Item >
             <Nav.Link href="/about" className="">about</Nav.Link>
-            </Nav.Item>
-                    <Nav.Item >
+          </Nav.Item>
+          <Nav.Item >
             <Nav.Link href="/contact" className="">contact</Nav.Link>
-            </Nav.Item>
+          </Nav.Item>
+          <Nav.Item > 
             <Searchbar />
+          </Nav.Item>
         </Nav>
       </div>
     )

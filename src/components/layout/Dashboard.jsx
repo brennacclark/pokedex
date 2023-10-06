@@ -33,9 +33,11 @@ export default class Dashboard extends Component {
 
   render() {
     return (
-      <div>
+      <div style={{ margin: '3vw', }}>
+        <div >
         <PokemonList limit={this.state.limit} offset={this.state.offset} />
-        <div className="pagination">
+        </div>
+        <div className="pagination" style={{ display: 'flex', justifyContent: 'center' }}>
           <button 
             className="btn"
             onClick={this.handlePreviousClick}
@@ -50,7 +52,8 @@ export default class Dashboard extends Component {
             Next
           </button>
         </div>
-      </div>
+    </div>
+
     );
   }
 }
