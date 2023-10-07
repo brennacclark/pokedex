@@ -3,17 +3,6 @@
     font-size: xx-large
 }
 
-/* themes.css */
-.card.light {
-    background-color: #fff;
-    color: #000;
-}
-
-.card.dark {
-    background-color: #333;
-    color: #fff;
-}
-
 .light {
     background-color: white;
     color: black;
@@ -22,4 +11,11 @@
 .dark {
     background-color: black;
     color: white;
+}
+
+a {
+    text-decoration: none;
+    /* Remove underline */
+    color: inherit;
+    /* Inherit color from parent element */
 }
