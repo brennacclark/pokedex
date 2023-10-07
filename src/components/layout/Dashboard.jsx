@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PokemonList from '../pokemon/PokemonList';
+import '../../App.css';
 
 export default class Dashboard extends Component {
   state = {
@@ -25,9 +26,12 @@ export default class Dashboard extends Component {
 
   render() {
     return (
-      <div>
-        <PokemonList limit={this.state.limit} offset={this.state.offset} />
-        <div className="pagination">
+      <div className="main" style={{ marginLeft: '1vw', marginRight: '1vw', maxWidth: '97w' }}>
+        <div className="pokemon-grid-container" >
+          <PokemonList limit={this.state.limit} offset={this.state.offset} />
+        </div>
+        <div className="pagination-container"
+          style={{ display: 'flex', justifyContent: 'center' }}>    
           <button 
             className="nes-btn"
             onClick={this.handlePreviousClick}
