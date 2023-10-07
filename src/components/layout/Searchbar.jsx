@@ -59,9 +59,9 @@ function Searchbar() {
         value={search}
         onChange={(e) => setSearch(e.target.value)}
         onFocus={() => setInvalidSearch(false)} // Reset invalidSearch when input box gets focus
-        style={invalidSearch ? { borderColor: 'red', color: 'red' } : {width:'160px', height: '30px', fontSize:'6pt'}}
+        style={invalidSearch ? { borderColor: 'red', color: 'red' } : {width:'160px', height: '30px', fontSize:'.85vh'}}
       />
-      <button className="nes-btn" type="submit" disabled={isLoading} style={{height: '30px', width:'40', fontSize:'6pt'}}> {/* Disable button when isLoading is true */}
+      <button className="nes-btn" type="submit" disabled={isLoading} style={{height: '30px', width:'40px', fontSize:'.85vh'}}> {/* Disable button when isLoading is true */}
         {isLoading ? 'Searching...' : 'Go!'} {/* Change button text based on loading status */}
       </button>
     </form>

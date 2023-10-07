@@ -8,8 +8,8 @@ export default class Navbar extends Component {
     return (
       <div>
         <nav className="title" style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center', textDecoration:'none' }}>
-          <Link to="/" className="" style={{fontSize: '32px', padding: '1px'}}>POKéDEX</Link>
-          <div className="" style={{display: 'flex', justifyContent: 'center', fontSize: '12px'}} >
+          <Link to="/" className="" style={{fontSize: '2vh', padding: '1px'}}>POKéDEX</Link>
+          <div className="" style={{display: 'flex', justifyContent: 'center', fontSize: '1vh'}} >
             <Link className="" to="/about" style={{padding: '10px'}}><div>about</div></Link>
             <Link className="" to="/contact" style={{padding: '10px'}}><div>contact</div></Link>
           </div>

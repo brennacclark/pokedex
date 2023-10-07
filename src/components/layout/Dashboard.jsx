@@ -4,7 +4,7 @@ import '../../App.css';
 
 export default class Dashboard extends Component {
   state = {
-    limit: 20, // Number of Pokémon to display per page
+    limit: 24, // Number of Pokémon to display per page
     offset: 0, // Offset for paginating through results
   };
 
@@ -31,7 +31,7 @@ export default class Dashboard extends Component {
           <PokemonList limit={this.state.limit} offset={this.state.offset} />
         </div>
         <div className="pagination-container"
-          style={{ display: 'flex', justifyContent: 'center' }}>    
+          style={{ display: 'flex', justifyContent: 'center',}}>    
           <button 
             className="nes-btn"
             onClick={this.handlePreviousClick}
