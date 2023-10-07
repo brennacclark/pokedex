@@ -51,6 +51,85 @@ export default class Contact extends Component {
           </div>
         </div>
 
+        {/* Feedback form */}
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            width: "100%",
+            paddingTop: "40vh",
+          }}
+        >
+          <FeedbackForm />
+        </div>
+      </div>
+    );
+  }
+}
+
+class FeedbackForm extends Component {
+  state = {
+    feedback: "",
+    showForm: false,
+  };
+
+  handleSubmit = (event) => {
+    event.preventDefault();
+    alert(`Feedback submitted: ${this.state.feedback}`);
+    this.setState({ feedback: "", showForm: false });
+  };
+
+  render() {
+    return (
+      <div
+        style={{
+          padding: "10px",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        {this.state.showForm && (
+          <form
+            onSubmit={this.handleSubmit}
+            style={{
+              padding: "10px",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
+          >
+            <label>Feedback:</label>
+            <textarea
+              value={this.state.feedback}
+              onChange={(e) => this.setState({ feedback: e.target.value })}
+            />
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+              }}
+            >
+              <input type="submit" value="Submit" />
+              <button
+                onClick={() =>
+                  this.setState({ showForm: !this.state.showForm })
+                }
+              >
+                Cancel
+              </button>
+            </div>
+          </form>
+        )}
+        {!this.state.showForm && (
+          <button
+            onClick={() => this.setState({ showForm: !this.state.showForm })}
+          >
+            Send Feedback
+          </button>
+        )}
       </div>
     );
   }
