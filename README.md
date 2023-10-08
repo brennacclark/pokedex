@@ -2,7 +2,7 @@ Most Pokédex websites are focused on the data and are resented in basic html an
 
 Gotta catch 'em all! :D
 
-[Link to Release Notes](RELEASE.md)
+[Release Notes](RELEASE.md)
 
 <hr>
 
