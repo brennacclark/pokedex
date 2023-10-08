@@ -201,7 +201,7 @@ function PokemonDetails({id: propId}) {
   function renderPokemonTable() {
     return (
     <div style={{ marginTop: '20px', marginBottom: '20px' }} className="nes-table-responsive">
-      <table className="nes-table is-bordered is-centered">
+      <table className="nes-table is-bordered is-centered is-dark">
           <thead>
             <tr>
               <th>Stat</th>
@@ -229,7 +229,7 @@ function PokemonDetails({id: propId}) {
     return (
        <div style={{ marginTop: '20px', marginBottom: '20px' }}>
           
-          <div style={{ margin: '20px' }} className="nes-container with-title is-centered">
+          <div style={{ margin: '20px' }} className="nes-container with-title is-centered is-dark">
             <p className="title">Description</p>
             <p>{pokemonData.description}</p>
           </div>
