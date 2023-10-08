@@ -12,17 +12,21 @@ import Footer from './components/layout/Footer';
 function App() {
   return (
     <div className="App">
-      <NavBar />
-      <Routes>
-        <Route path="/" element= {<Dashboard/>} />
-        <Route path="/about" element= {<About/>} />
-        <Route path="/contact" element= {<Contact/>} />
-        <Route path="/pokemon" element={<Pokemon />} />
-        <Route path="/pokemon/:id" element={<Pokemon />} />
-        <Route path="/pokemon/:name" element={<Pokemon />} />
-      </Routes>
-      <Footer />
-    </div>
+      <div className="content-wrapper">
+        <NavBar />
+        <div className="content">
+            <Routes>
+            <Route path="/" element= {<Dashboard/>} />
+            <Route path="/about" element= {<About/>} />
+            <Route path="/contact" element= {<Contact/>} />
+            <Route path="/pokemon" element={<Pokemon />} />
+            <Route path="/pokemon/:id" element={<Pokemon />} />
+            <Route path="/pokemon/:name" element={<Pokemon />} />
+          </Routes>
+          </div>
+        </div>
+        <Footer />
+      </div>
   )
 }
 

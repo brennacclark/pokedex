@@ -24,4 +24,26 @@
     .pokemon-grid {
         grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
     }
+    
 }
+
+/* App.css */
+.App {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Set a minimum height to fill the viewport */
+  }
+  
+  .content-wrapper {
+    flex-grow: 1; /* Allow the content to grow and fill the remaining space */
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .content {
+    flex-grow: 1; /* Allow the content to grow and fill the remaining space */
+    padding: 20px; /* Adjust the padding as needed */
+  }
+  
+  /* Your existing Footer styles */
+  
