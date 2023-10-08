@@ -4,7 +4,8 @@ export default class About extends Component {
   render() {
     return (
       <div style={{
-        padding: '50px'
+        padding: '50px',
+        fontSize: '14x'
       }}>
         Hi there! 
 
@@ -31,6 +32,20 @@ export default class About extends Component {
           <i class="nes-bulbasaur"></i>
           <i class="nes-charmander"></i>
           <i class="nes-squirtle"></i>
+        </div>
+
+        <div style={{
+            textAlign: 'justify',
+            fontSize: '8px',
+            fontWeight: '100', // Set font weight to the thinnest available
+            border: '1px solid white',
+            marginTop: '10vh',
+            padding: '10px'
+        }}>
+
+        This website is a personal project and is not affiliated with, endorsed by, or in any way officially connected with The Pokémon Company, Nintendo, or any of their subsidiaries or affiliates. The official Pokémon website can be found at www.pokemon.com. Pokémon, the Pokémon logo, and all related images and assets are trademarks and/or copyrights of The Pokémon Company and Nintendo.
+
+        The content on this website is for informational and educational purposes only under the "fair use" guidelines established by federal copyright laws. Any trademarks, service marks, product names, or named features are assumed to be the property of their respective owners and are used only for reference. 
         </div>
 
       </div>
