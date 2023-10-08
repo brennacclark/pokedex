@@ -7,7 +7,6 @@ export default class Footer extends Component {
       color: 'white',
       textAlign: 'center',
       padding: '1px',
-      position: 'fixed', // Use 'fixed' position
       bottom: '0',
       width: '100%',
       fontSize: '10px'
