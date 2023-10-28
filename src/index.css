@@ -5,8 +5,7 @@ code,
 kbd,
 samp {
   font-family: 'Press Start 2P', cursive;
-  background-color: #222;
+  background-color: #444;
   color: #fff;
   font-size: 16px;
-  min-width: 275px;
 }

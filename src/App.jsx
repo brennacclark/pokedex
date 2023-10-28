@@ -2,32 +2,20 @@ import { useState } from 'react';
 import { Route, Routes } from "react-router-dom";
 import './App.css'
 import "nes.css/css/nes.min.css";
-import NavBar from './components/layout/NavBar';
-import About from './components/layout/About'
-import Contact from './components/layout/Contact'
-import Dashboard from "./components/layout/Dashboard";
-import Pokemon from './components/pokemon/PokemonDetails';
+import Navbar from './components/layout/NavBar';
+import Pokedex from './components/layout/Pokedex';
 import Footer from './components/layout/Footer';
 
 function App() {
   return (
     <div className="App">
-      <div className="content-wrapper">
-        <NavBar />
-        <div className="content">
-            <Routes>
-            <Route path="/" element= {<Dashboard/>} />
-            <Route path="/about" element= {<About/>} />
-            <Route path="/contact" element= {<Contact/>} />
-            <Route path="/pokemon" element={<Pokemon />} />
-            <Route path="/pokemon/:id" element={<Pokemon />} />
-            <Route path="/pokemon/:name" element={<Pokemon />} />
-          </Routes>
-          </div>
-        </div>
-        <Footer />
+      <Navbar />
+      <div id="main-content">
+        <Pokedex />
       </div>
-  )
+      <Footer/>
+    </div>
+  );
 }
 
 export default App

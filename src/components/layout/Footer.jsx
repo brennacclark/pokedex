@@ -6,10 +6,10 @@ export default class Footer extends Component {
       background: '#333',
       color: 'white',
       textAlign: 'center',
-      padding: '1px',
-      bottom: '0',
       width: '100%',
-      fontSize: '10px'
+      fontSize: '10px',
+      flexShrink: '0',
+      height: '5vh',
     };
 
     return (
