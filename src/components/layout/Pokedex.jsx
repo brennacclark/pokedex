@@ -1,7 +1,9 @@
 import React from "react";
 import "../../App.css";
+import { usePokemon } from '../pokemon/PokemonContext';  // import the context
 
 function Pokedex() {
+  const { pokemonData } = usePokemon(); // use the context
   return (
     <div className="pokedex-wrapper">
       <div className="pokedex-container">
@@ -16,7 +18,18 @@ function Pokedex() {
           </div>
           <div className="pokedex-middle">
             <div className="pokedex-screen-frame">
-              <div className="pokedex-screen"></div>
+              <div className="pokedex-screen">
+                {pokemonData && (
+                  <>
+                    <img
+                      src={pokemonData.sprites.front_default}
+                      alt={pokemonData.name}
+                    />
+                    <p>Name: {pokemonData.name}</p>
+                    <p>ID: {pokemonData.id}</p>
+                  </>
+                )}
+              </div>
             </div>
           </div>
           <div className="pokedex-bottom">
